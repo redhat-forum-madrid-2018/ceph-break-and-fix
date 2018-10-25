@@ -56,6 +56,8 @@ CONTAINER ID        IMAGE                                                     CO
 [root@ceph1 ~]# 
 ```
 
+This part is automated in the (ansible role fix-rados)[ansible/roles/fix-rados].
+
 ## Corrupting data
 
 Cluster is in error state:
@@ -345,3 +347,5 @@ So we can restart the osd container to solve it:
 > This is a lab so no much IO on the OSD. In production restating an OSD could impact clients.
 >
 > If you are uncertain when repairing a pg do not hesitate to open a case!!!!
+
+This part is not automated to show how troubleshooting works.

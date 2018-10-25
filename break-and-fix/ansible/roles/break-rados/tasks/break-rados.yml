@@ -18,3 +18,7 @@
     state: restarted
     name: ceph-radosgw@ceph1
   become: true
+
+- name: "data corruption"
+  command: "/usr/bin/python /root/data-corruption/data-corruptor.py"
+  become: true
