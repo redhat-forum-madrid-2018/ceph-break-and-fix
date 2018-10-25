@@ -1,4 +1,4 @@
-# Installation
+# Lab Installation
 
 ## The environment
 
@@ -42,3 +42,14 @@ ceph3.redhatforummad.com | 192.168.1.123 | A | ceph-mon |
 cephinfra.redhatforummad.com | 192.168.1.120 | A | not defined |
 rhproducts.redhatforummad.com | cephinfra | CNAME | web application | 3838/tcp
 cephmetrics.redhatforummad.com | cephinfra | CNAME | cephmetrics | 8080/tcp
+
+
+## Ceph Installation
+
+* Each ceph node has two data disks (/dev/vdb and /dev/vdc).
+* OSDs are collocated (journal in the same device) and filestore is used.
+* Containerized ceph is installed so MONs, OSDs and MGRs share server.
+* cephinfra node is used as ansible server to deploy ceph cluster and cephmetrics.
+* cephmetrics is installed in cephinfra node.
+* ansible playbooks used to install the ceph cluster are located [here](ceph-ansible).
+* ansible playbooks used to install cephmetrics are located [here](cephmetrics-ansible).
