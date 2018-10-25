@@ -58,7 +58,7 @@ cephmetrics.redhatforummad.com | cephinfra | CNAME | cephmetrics | 8080/tcp
 
 A [web application](../webapplication) was created to use with this lab.
 
-This application has been developed in *R* and it is installed in the **cephinfra** node. To install it:
+This application has been developed in **R** and it is installed in the **cephinfra** node. To install it:
 
 * Install **python-boto** to be able to use python to access to S3 API that ceph provides:
 
@@ -66,7 +66,7 @@ This application has been developed in *R* and it is installed in the **cephinfr
 [root@cephinfra ~]# yum install -y python-boto
 ```
 
-* As *R* need to be installed development tools have to be installed:
+* As **R** need to be installed development tools have to be installed:
 
 ```
 [root@cephinfra ~]# yum groupinstall -y 'Development Tools'
