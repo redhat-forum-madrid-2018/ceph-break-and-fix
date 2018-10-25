@@ -1,0 +1,28 @@
+[Unit]
+Description=Ceph RGW
+After=docker.service
+
+[Service]
+EnvironmentFile=-/etc/environment
+ExecStartPre=-/usr/bin/docker stop ceph-rgw-ceph1
+ExecStartPre=-/usr/bin/docker rm ceph-rgw-ceph1
+ExecStart=/usr/bin/docker run --rm --net=host \
+  --memoyr=1g \
+  --cpu-quota=100000 \
+  -v /var/lib/ceph:/var/lib/ceph:z \
+  -v /etc/ceph:/etc/ceph:z \
+  -v /var/run/ceph:/var/run/ceph:z \
+  -v /etc/localtime:/etc/localtime:ro \
+  -e CEPH_DAEMON=RGW \
+  -e CLUSTER=ceph \
+  --name=ceph-rgw-ceph1 \
+   \
+  registry.access.redhat.com/rhceph/rhceph-3-rhel7:latest
+ExecStopPost=-/usr/bin/docker stop ceph-rgw-ceph1
+Restart=always
+RestartSec=10s
+TimeoutStartSec=120
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target

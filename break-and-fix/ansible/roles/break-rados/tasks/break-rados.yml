@@ -1,0 +1,20 @@
+---
+# (c) 2018 Jose Angel de Bustos Perez
+# Distributed under GPLv3 License (https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+- name: "break radosgw"
+  copy:
+    src: ceph-radosgw@.service
+    dest: /etc/systemd/system
+    owner: root
+    group: root
+    mode: 0644
+    setype: systemd_unit_file_t
+  become: true
+
+- name: "reload systemd units"
+  systemd:
+    daemon_reload: yes
+    state: restarted
+    name: ceph-radosgw@ceph1
+  become: true

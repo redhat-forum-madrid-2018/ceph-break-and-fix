@@ -1,0 +1,6 @@
+# (c) 2018 Jose Angel de Bustos Perez <jadebustos@redhat.com>
+# Distributed under GPLv3 License (https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+- hosts: radosgw
+  roles:
+   - break-rados

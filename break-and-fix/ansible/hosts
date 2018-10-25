@@ -1,0 +1,2 @@
+[radosgw]
+ceph1.redhatforummad.com ansible_user=admin
