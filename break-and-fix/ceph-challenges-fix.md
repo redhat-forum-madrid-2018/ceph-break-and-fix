@@ -56,7 +56,7 @@ CONTAINER ID        IMAGE                                                     CO
 [root@ceph1 ~]# 
 ```
 
-This part is automated in the (ansible role fix-rados)[ansible/roles/fix-rados].
+This part is automated in the [ansible role fix-rados](ansible/roles/fix-rados).
 
 ## Corrupting data
 

@@ -49,7 +49,7 @@ CONTAINER ID        IMAGE                                                     CO
 [root@ceph1 ~]#
 ```
 
-This part is automated in the (ansible role break-rados)[ansible/roles/break-rados].
+This part is automated in the [ansible role break-rados](ansible/roles/break-rados).
 
 ## Corrupting data 
 
@@ -121,4 +121,4 @@ After a while:
 [root@ceph1 ~]# 
 ``` 
 
-This part is automated in the (ansible role break-rados)[ansible/roles/break-rados]. To corrupt data (one script)[data-corruption] is used. This script is placed in **/root/data-corruption** in **ceph1** server.
+This part is automated in the [ansible role break-rados](ansible/roles/break-rados). To corrupt data [one script](data-corruption) is used. This script is placed in **/root/data-corruption** in **ceph1** server.
