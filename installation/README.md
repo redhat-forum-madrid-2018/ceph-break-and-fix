@@ -148,3 +148,61 @@ server {
 [root@cephinfra ~]# firewall-cmd --zone=public --add-port=3838/tcp --permanent
 [root@cephinfra ~]# firewall-cmd --reload
 ```
+
+## Uploading data to Ceph
+
+The application uses four files to generate the work cloud:
+
+* **ceph.txt.gz** for **Red Hat Ceph Storage**.
+* **ocp.txt.gz** for **Openshift Container Platform**.
+* **osp.txt.gz** for **Red Hat Openstack Platform**.
+* **rhv.txt.gz** for **Red Hat Virtualization**.
+
+An user has to be created to access the object storage:
+
+```
+[root@ceph1 ~]# radosgw-admin user create --uid=rhforum --display-name="Red Hat Forum User"
+{
+    "user_id": "rhforum",
+    "display_name": "Red",
+    "email": "",
+    "suspended": 0,
+    "max_buckets": 1000,
+    "auid": 0,
+    "subusers": [],
+    "keys": [
+        {
+            "user": "rhforum",
+            "access_key": "9D0Y7J44G5Q9B8H491GA",
+            "secret_key": "lm1g1LrLKUDjKojBQjNfg9iyAU5P68muP0QF70lX"
+        }
+    ],
+    "swift_keys": [],
+    "caps": [],
+    "op_mask": "read, write, delete",
+    "default_placement": "",
+    "placement_tags": [],
+    "bucket_quota": {
+        "enabled": false,
+        "check_on_raw": false,
+        "max_size": -1,
+        "max_size_kb": 0,
+        "max_objects": -1
+    },
+    "user_quota": {
+        "enabled": false,
+        "check_on_raw": false,
+        "max_size": -1,
+        "max_size_kb": 0,
+        "max_objects": -1
+    },
+    "temp_url_keys": [],
+    "type": "rgw"
+}
+
+[root@ceph1 ~]# 
+```
+
+Now we can create a bucket to store data. You can use [this python script](../python-s3-code/s3createbucket.py) to create the **redhatforum** bucket.
+
+You can use [this python script](../python-s3-code/s3uploadfiles.py) to upload the [data](../s3data) (the **.gz** files) to the **redhatforum** bucket.
