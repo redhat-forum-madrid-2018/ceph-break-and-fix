@@ -44,7 +44,7 @@ rhproducts.redhatforummad.com | cephinfra | CNAME | web application | 3838/tcp
 cephmetrics.redhatforummad.com | cephinfra | CNAME | cephmetrics | 8080/tcp
 
 
-## Ceph Installation
+## Ceph 3.1 installation
 
 * Each ceph node has two data disks (/dev/vdb and /dev/vdc).
 * OSDs are collocated (journal in the same device) and filestore is used.
@@ -53,3 +53,98 @@ cephmetrics.redhatforummad.com | cephinfra | CNAME | cephmetrics | 8080/tcp
 * cephmetrics is installed in cephinfra node.
 * ansible playbooks used to install the ceph cluster are located [here](ceph-ansible).
 * ansible playbooks used to install cephmetrics are located [here](cephmetrics-ansible).
+
+## Web application installation
+
+A [web application](../webapplication) was created to use with this lab.
+
+This application has been developed in *R* and it is installed in the **cephinfra** node. To install it:
+
+* Install **python-boto** to be able to use python to access to S3 API that ceph provides:
+
+```
+[root@cephinfra ~]# yum install -y python-boto
+```
+
+* As *R* need to be installed development tools have to be installed:
+
+```
+[root@cephinfra ~]# yum groupinstall -y 'Development Tools'
+[root@cephinfra ~]# yum install -y libcurl-devel openssl-devel libxml2-devel
+```
+
+* Enable the **optional** repo and **EPEL** repos:
+
+```
+[root@cephinfra ~]# subscription-manager repos --enable=rhel-7-server-optional-rpms
+[root@cephinfra ~]# yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+* Install **R** (from EPEL):
+
+```
+[root@cephinfra ~]# yum install -y R
+```
+
+* To run the application some **R** packages need to be installed:
+
+```
+[root@cephinfra ~]# cat install_packages.R 
+install.packages('shiny', repos='http://cran.rediris.es/')
+install.packages('shinydashboard', repos='http://cran.rediris.es/')
+install.packages('memoise', repos='http://cran.rediris.es/')
+install.packages('tm', repos='http://cran.rediris.es/')
+install.packages('wordcloud', repos='http://cran.rediris.es/')
+[root@cephinfra ~]# Rscript install_packages.R 
+```
+
+* To be able to run the **R** application as a web application **shiny-server** has to be installed:
+
+```
+[root@cephinfra ~]# wget https://download3.rstudio.org/centos6.3/x86_64/shiny-server-1.5.9.923-x86_64.rpm
+[root@cephinfra ~]# yum localinstall shiny-server-1.5.9.923-x86_64.rpm
+```
+
+* Configure **shiny-server**:
+
+```
+[root@cephinfra ~]# cat /etc/shiny-server/shiny-server.conf 
+# Instruct Shiny Server to run applications as the user "shiny"
+run_as shiny;
+
+# Define a server that listens on port 3838
+server {
+  listen 3838;
+
+  # Define a location at the base URL
+  location / {
+
+    # Host the directory of Shiny Apps stored in this directory
+    #site_dir /srv/shiny-server;
+    site_dir /srv/rhforum;
+
+    # Log all Shiny output to files in this directory
+    log_dir /var/log/shiny-server;
+
+    # When a user visits the base URL rather than a particular application,
+    # an index of the applications available in this directory will be shown.
+    directory_index off;
+  }
+}
+[root@cephinfra ~]# 
+```
+
+* Create **/srv/shiny-server** and copy the [application](../webapplication) to that directory.
+* Restart and configure **shiny-server** to start at boot time:
+
+```
+[root@cephinfra ~]# systemctl enable shiny-server
+[root@cephinfra ~]# systemctl restart shiny-server
+```
+
+* If the firewall is enabled open **3838/tcp** port:
+
+```
+[root@cephinfra ~]# firewall-cmd --zone=public --add-port=3838/tcp --permanent
+[root@cephinfra ~]# firewall-cmd --reload
+```
