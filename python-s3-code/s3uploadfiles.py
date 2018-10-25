@@ -38,6 +38,7 @@ def main():
   bucket = conn.get_bucket('redhatforum')
 
   for item in files:
+    # configure this with your path for the data files
     filename = os.path.join('/home/jadebustos/src/mygithub/rhforum/shinyapp/data', item)
     print "Uploading " + filename
     k = bucket.new_key(item)
