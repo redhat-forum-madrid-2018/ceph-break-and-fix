@@ -161,10 +161,10 @@ The application uses four files to generate the work cloud:
 An user has to be created to access the object storage:
 
 ```
-[root@ceph1 ~]# radosgw-admin user create --uid=rhforum --display-name="Red Hat Forum User"
+[root@ceph1 ~]# docker exec ceph-mon-ceph1 radosgw-admin user create --uid=rhforum --display-name="Red Hat Forum User"
 {
     "user_id": "rhforum",
-    "display_name": "Red",
+    "display_name": "Red Hat Forum User",
     "email": "",
     "suspended": 0,
     "max_buckets": 1000,
@@ -173,8 +173,8 @@ An user has to be created to access the object storage:
     "keys": [
         {
             "user": "rhforum",
-            "access_key": "9D0Y7J44G5Q9B8H491GA",
-            "secret_key": "lm1g1LrLKUDjKojBQjNfg9iyAU5P68muP0QF70lX"
+            "access_key": "MOW9RJBRBUNX6T9DM3GR",
+            "secret_key": "R2VJ3JA3PlOS2olQqE3g3PIMEwgNKcCsg6cLwCsB"
         }
     ],
     "swift_keys": [],
