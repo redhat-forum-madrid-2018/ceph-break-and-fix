@@ -11,8 +11,8 @@ import boto.s3.connection
 
 def main():
   # put here your access_key and secret_key to access s3 
-  access_key = '9D0Y7J44G5Q9B8H491GA'
-  secret_key = 'lm1g1LrLKUDjKojBQjNfg9iyAU5P68muP0QF70lX'
+  access_key = 'FKQY387H5NSX077T6KWZ'
+  secret_key = 'Y1CsXS3mxnMS1RjZxjsru1yysiK4gBXQsk6Kxkck'
 
   # your rados host
   radoshost = 'ceph1.redhatforummad.com'
