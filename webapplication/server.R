@@ -17,6 +17,8 @@ server <- function(input, output) {
       filename <- "ocp.txt.gz"
     else if ( input$choice == "rhv" )
       filename <- "rhv.txt.gz"
+    else if ( input$choice == "ansible" )
+      filename <- "ansible.txt.gz"
     
     # download data file from ceph
     clicmd <- paste('python s3downloadfile.py', filename, sep=' ')

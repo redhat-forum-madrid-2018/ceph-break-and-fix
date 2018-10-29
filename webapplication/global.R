@@ -8,7 +8,8 @@ library(wordcloud)
 products <<- list("Red Hat Ceph Storage" = "ceph",
                   "OpenShift Container Platform" = "ocp",
                   "Red Hat Openstack Platform" = "osp",
-                  "Red Hat Virtualization" = "rhv")
+                  "Red Hat Virtualization" = "rhv",
+                  "Red Hat Ansible Automation" = "ansible")
 
 termMatrix <- memoise(function(product) {
   if (!(product %in% products))

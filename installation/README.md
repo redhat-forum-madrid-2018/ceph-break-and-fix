@@ -60,12 +60,6 @@ A [web application](../webapplication) was created to use with this lab.
 
 This application has been developed in **R** and it is installed in the **cephinfra** node. To install it:
 
-* Install **python-boto** to be able to use python to access to S3 API that ceph provides:
-
-```
-[root@cephinfra ~]# yum install -y python-boto
-```
-
 * As **R** need to be installed development tools have to be installed:
 
 ```
@@ -78,6 +72,12 @@ This application has been developed in **R** and it is installed in the **cephin
 ```
 [root@cephinfra ~]# subscription-manager repos --enable=rhel-7-server-optional-rpms
 [root@cephinfra ~]# yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+```
+
+* Install **python-boto** to be able to use python to access to S3 API that ceph provides:
+
+```
+[root@cephinfra ~]# yum install -y python-boto
 ```
 
 * Install **R** (from EPEL):
@@ -173,8 +173,8 @@ An user has to be created to access the object storage:
     "keys": [
         {
             "user": "rhforum",
-            "access_key": "MOW9RJBRBUNX6T9DM3GR",
-            "secret_key": "R2VJ3JA3PlOS2olQqE3g3PIMEwgNKcCsg6cLwCsB"
+            "access_key": "FKQY387H5NSX077T6KWZ",
+            "secret_key": "Y1CsXS3mxnMS1RjZxjsru1yysiK4gBXQsk6Kxkck"
         }
     ],
     "swift_keys": [],
