@@ -22,7 +22,7 @@ def main():
   radosport = 8080
 
   # files to upload
-  files = ['osp.txt.gz', 'ocp.txt.gz', 'ceph.txt.gz', 'rhv.txt.gz']
+  files = ['osp.txt.gz', 'ocp.txt.gz', 'ceph.txt.gz', 'rhv.txt.gz', 'ansible.txt.gz']
 
   boto.config.add_section('s3')
 
@@ -39,7 +39,7 @@ def main():
 
   for item in files:
     # configure this with your path for the data files
-    filename = os.path.join('/home/jadebustos/src/mygithub/rhforum/shinyapp/data', item)
+    filename = os.path.join('../s3data/', item)
     print "Uploading " + filename
     k = bucket.new_key(item)
     k.set_contents_from_filename(filename)
