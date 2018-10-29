@@ -157,6 +157,7 @@ The application uses four files to generate the work cloud:
 * **ocp.txt.gz** for **Openshift Container Platform**.
 * **osp.txt.gz** for **Red Hat Openstack Platform**.
 * **rhv.txt.gz** for **Red Hat Virtualization**.
+* **ansible.txt.gz** for **Red Hat Ansible Automation**.
 
 An user has to be created to access the object storage:
 
