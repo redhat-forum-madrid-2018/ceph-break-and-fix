@@ -1,5 +1,7 @@
 # Ceph challenges (breaking)
 
+After breaking the environment the [web application](../webapplication) will not work so you will have to fix it to webapplication can work again. The application needs to download data from rados gateway to work.
+
 ## Rados gateway container not started
 
 The file **/etc/systemd/system/ceph-radosgw@.service** will be modified in **ceph1** server:

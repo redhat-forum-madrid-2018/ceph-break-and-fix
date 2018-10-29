@@ -1,5 +1,7 @@
 # Ceph challenges
 
+The [web application](../webapplication) is broken and you will have to fixe it in order to work again. This application download data from Ceph (Rados gateway) and if it can not reach the rados gateway it will not work.
+
 ## Rados gateway container not started (fixing)
 
 The file **/etc/systemd/system/ceph-radosgw@.service** will be fixed in **ceph1** server:
