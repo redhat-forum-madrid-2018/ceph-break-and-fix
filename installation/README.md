@@ -90,11 +90,11 @@ This application has been developed in **R** and it is installed in the **cephin
 
 ```
 [root@cephinfra ~]# cat install_packages.R 
-install.packages('shiny', repos='http://cran.rediris.es/')
-install.packages('shinydashboard', repos='http://cran.rediris.es/')
-install.packages('memoise', repos='http://cran.rediris.es/')
-install.packages('tm', repos='http://cran.rediris.es/')
-install.packages('wordcloud', repos='http://cran.rediris.es/')
+install.packages('shiny', repos='https://cran.rediris.es/')
+install.packages('shinydashboard', repos='https://cran.rediris.es/')
+install.packages('memoise', repos='https://cran.rediris.es/')
+install.packages('tm', repos='https://cran.rediris.es/')
+install.packages('wordcloud', repos='https://cran.rediris.es/')
 [root@cephinfra ~]# Rscript install_packages.R 
 ```
 
